@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.78/build/spline-viewer.js" async></script>
+    <title>Video Stream</title>
+  </head>
+  <body>
+    <div class="page-container">
+      <div class="content-wrapper">
+        <img
+          src="choose-your-faith-10.png"
+          class="background-image"
+          alt="Background"
+        />
+        <div class="main-content">
+          <div class="header-button">
+            <div class="button-text">stare at yourself</div>
+            <div class="button-emoji">😈</div>
+          </div>
+          <div class="columns-container">
+            <div class="left-column">
+              <div class="nested-columns">
+                <div class="nested-left">
+                  <button
+                    class="rotated-text-container deliver-button"
+                    aria-label="Deliver"
+                  >
+                    <span class="deliver-text">deliver?</span>
+                  </button>
+                </div>
+                <div class="nested-right">
+                  <div class="video-placeholder">
+                    <img
+                      src="http://10.60.90.37:8080/video"
+                      id="androidFeed"
+                      class="video-feed"
+                      alt="Video Feed"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="right-column">
+              <button
+                class="rotated-text-container-right deliver-button"
+                aria-label="Deliver"
+              >
+                <span class="deliver-text-right">deliver?</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function startStream() {
+        const videoElement = document.getElementById("androidFeed");
+        videoElement.src = "http://10.60.90.37:8080/video";
+        videoElement.onerror = function () {
+          console.error("Error loading video feed.");
+          alert(
+            "Unable to load video feed. Please check the URL and network connection.",
+          );
+        };
+      }
+
+      // Start stream automatically
+      window.addEventListener("load", startStream);
+    </script>
+  </body>
+</html>
